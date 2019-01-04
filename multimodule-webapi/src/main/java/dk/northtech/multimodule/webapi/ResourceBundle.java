@@ -28,5 +28,9 @@ public class ResourceBundle implements ServletContextListener {
     if (coreService != null) {
       coreService.stopAsync().awaitTerminated();
     }
+    ShutdownLogic.shutDownGeoTools();
+    ShutdownLogic.deregisterDrivers();
+    // ShutdownLogic.shutdownLogback();
+    ShutdownLogic.shutDownRxJava();
   }
 }
