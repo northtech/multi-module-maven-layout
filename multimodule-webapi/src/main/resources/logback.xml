@@ -1,0 +1,41 @@
+<!--
+Make this log configuration file available in the classpath.
+
+For a Tomcat deployment, it is convenient to place it in the [Tomcat home]/lib folder, where it can be edited without
+redeployment.
+
+Alternatively, place it in src/main/resources to have it packaged into the war and only take effect for the web-app it
+is deployed with.
+The downside to this is that it is not easily editable and persistent, as it will be overwritten with each deployment.
+-->
+<configuration scan="true" scanPeriod="30 seconds">
+  <appender name="rollingfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- Use multimodulemavenlayout.home if given as -D parameter to Java, otherwise use {user.home}/multimodulemavenlayout -->
+      <fileNamePattern>${multimodulemavenlayout.home:-${user.home}/multimodulemavenlayout}/logs/multimodulemavenlayout.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%date{HH:mm:ss} %-5level %logger{35} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="async-rollingfile" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="rollingfile"/>
+  </appender>
+
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%date{HH:mm:ss} %highlight(%-5level %logger{35} - %msg%n)</pattern>
+    </encoder>
+  </appender>
+
+  <!--
+  <root level="INFO">
+    <appender-ref ref="async-rollingfile"/>
+  </root>
+  -->
+  <root level="DEBUG">
+    <appender-ref ref="console"/>
+  </root>
+</configuration>

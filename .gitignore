@@ -1,0 +1,69 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+dist/
+/tmp
+/out-tsc
+.cache/
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+*.iml
+*.iws
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+coverage/
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+logs/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Java-specific tooling:
+# Maven
+log/
+target/
+.flattened-pom.xml
+
+# Automated pom rewrite
+pom.xml.bak
+
+# Gradle
+.gradle/
+build/
+
+# A Gradle/IntelliJ/Tomcat combination uses this folder to deploy files
+classes/
+
+# Generated reports
+jgiven-reports/
+
+# Subversion
+.svn/
+
+# profiling files
+chrome-profiler-events.json
+speed-measure-plugin.json
