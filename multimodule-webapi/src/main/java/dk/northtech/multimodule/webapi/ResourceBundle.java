@@ -10,6 +10,10 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+/**
+ * This class is responsible for orchestrating the required injection system and controlling the life cycle of
+ * the services.
+ */
 @WebListener
 public class ResourceBundle implements ServletContextListener {
   private static final Logger LOGGER = LoggerFactory.getLogger(ResourceBundle.class);
