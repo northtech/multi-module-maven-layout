@@ -64,6 +64,8 @@
   </dependencies>
 
   <build>
+    <!-- pluginManagement sets up potential plugins and their base configurations which the individual projects
+         can activate by referencing just the qualified plugin name -->
     <pluginManagement>
       <plugins>
         <plugin>
@@ -218,6 +220,9 @@
       </plugins>
     </pluginManagement>
     <plugins>
+      <!-- Activate almost all the plugins above by default in all projects.
+           One notable exception is the jar plugin which each project should set up individually to include an
+           Automatic-Module-Name in manifestEntries. -->
       <plugin>
         <groupId>com.github.ekryd.sortpom</groupId>
         <artifactId>sortpom-maven-plugin</artifactId>
@@ -257,7 +262,7 @@
 
   <repositories>
     <repository>
-      <!-- Explicitly adding Central at the top to speed up resolution of common dependencies -->
+      <!-- Explicitly adding Central at the top speeds up resolution of common dependencies -->
       <id>central</id>
       <name>Maven Repository Switchboard</name>
       <url>https://repo1.maven.org/maven2</url>
