@@ -4,9 +4,10 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.health.HealthCheckRegistry;
 import com.google.inject.AbstractModule;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@ParametersAreNonnullByDefault
+/**
+ * Expose the metric/health registries to the dependency injection system by including this Module as part of the
+ * Injector configuration.
+ */
 public class MetricsGuiceModule extends AbstractModule {
   @Override
   protected void configure() {

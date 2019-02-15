@@ -12,7 +12,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 /**
- * This class is responsible for orchestrating the required injection system and controlling the life cycle of
+ * This class is responsible for orchestrating the required injection system and controlling the lifecycle of
  * the services.
  */
 @WebListener
