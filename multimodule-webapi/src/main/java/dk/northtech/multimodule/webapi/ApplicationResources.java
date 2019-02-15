@@ -16,8 +16,8 @@ import javax.servlet.annotation.WebListener;
  * the services.
  */
 @WebListener
-public class ResourceBundle implements ServletContextListener {
-  private static final Logger LOGGER = LoggerFactory.getLogger(ResourceBundle.class);
+public class ApplicationResources implements ServletContextListener {
+  private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationResources.class);
   public static CoreService coreService;
 
   @Override

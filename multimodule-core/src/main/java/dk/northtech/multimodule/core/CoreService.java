@@ -31,7 +31,7 @@ public class CoreService extends AbstractIdleService {
   }
 
   public String performBackendService() {
-    try(var timerContext = timer.time()) {
+    try (var timerContext = timer.time()) {
       LOGGER.debug("Core DataService doing work");
       return "Yay!";
     }
