@@ -3,6 +3,7 @@ package dk.northtech.multimodule.webapi;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import dk.northtech.multimodule.core.CoreService;
+import dk.northtech.multimodule.webapi.metrics.MetricsGuiceModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +23,7 @@ public class ResourceBundle implements ServletContextListener {
   @Override
   public void contextInitialized(ServletContextEvent sce) {
     LOGGER.info("Application context initializing");
-    Injector injector = Guice.createInjector();
+    Injector injector = Guice.createInjector(new MetricsGuiceModule());
     coreService = injector.getInstance(CoreService.class);
     coreService.startAsync().awaitRunning();
   }
@@ -34,7 +35,7 @@ public class ResourceBundle implements ServletContextListener {
     }
     ShutdownLogic.shutDownGeoTools();
     ShutdownLogic.deregisterDrivers();
-    // ShutdownLogic.shutdownLogback();
+    ShutdownLogic.shutdownLogback();
     ShutdownLogic.shutDownRxJava();
   }
 }
