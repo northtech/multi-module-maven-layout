@@ -11,7 +11,7 @@
     <param-value>true</param-value>
   </context-param>
 
-  <!-- You probably want to have this under some access control -->
+  <!-- DropWizard Metric's readout servlet. You probably want to have this under some access control -->
   <servlet>
     <servlet-name>metrics</servlet-name>
     <servlet-class>com.codahale.metrics.servlets.AdminServlet</servlet-class>

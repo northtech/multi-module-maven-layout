@@ -27,12 +27,12 @@ public class CoreService extends AbstractIdleService {
 
   @Override
   protected void startUp() throws Exception {
-    LOGGER.info("DataService initialized");
+    LOGGER.info("CoreService initialized");
   }
 
   public String performBackendService() {
     try (var timerContext = timer.time()) {
-      LOGGER.debug("Core DataService doing work");
+      LOGGER.debug("CoreService doing work");
       return "Yay!";
     }
   }
