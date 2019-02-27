@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+  <display-name>${project.artifactId} ${timestamp} ${project.version}</display-name>
   <context-param>
     <!-- We disable Logback's built-in ServletContainerInitializer since it runs before our ServletContextListener,
        preventing us from logging during shutdown -->

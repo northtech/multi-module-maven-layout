@@ -5,6 +5,7 @@ import dk.northtech.gsonextensions.jaxrsgsongeo.GeoMessageBodyHandler;
 import dk.northtech.gsonextensions.jaxrsgsongeo.GeoParamConverterProvider;
 import dk.northtech.gsonextensions.jaxrssupport.JaxRsHttpStatus;
 import dk.northtech.gsonextensions.jaxrssupport.Rfc7159StringMessageBodyHandler;
+import dk.northtech.multimodule.webapi.serviceapis.SomeServiceWebApi;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

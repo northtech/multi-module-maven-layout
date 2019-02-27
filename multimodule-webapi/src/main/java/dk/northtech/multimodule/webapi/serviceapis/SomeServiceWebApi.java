@@ -1,4 +1,4 @@
-package dk.northtech.multimodule.webapi;
+package dk.northtech.multimodule.webapi.serviceapis;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
