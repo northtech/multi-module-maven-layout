@@ -37,5 +37,7 @@ public class ApplicationResources implements ServletContextListener {
     ShutdownLogic.deregisterDrivers();
     ShutdownLogic.shutdownLogback();
     ShutdownLogic.shutDownRxJava();
+    // Defensively release all resources, to mitigate the impact of any misbehaving code causing a classloader leak:
+    coreService = null;
   }
 }

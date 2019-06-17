@@ -20,6 +20,8 @@ The downside to this is that it is not easily editable and persistent, as it wil
     </encoder>
   </appender>
 
+  <!-- Do not include this unless you actually use it in a logger below. Otherwise it instantiates an object which will
+       never get a shutdown message from the logging context, creating a thread- and classloader leak. -->
   <appender name="async-rollingfile" class="ch.qos.logback.classic.AsyncAppender">
     <appender-ref ref="rollingfile"/>
   </appender>
@@ -30,11 +32,9 @@ The downside to this is that it is not easily editable and persistent, as it wil
     </encoder>
   </appender>
 
-  <!--
   <root level="INFO">
     <appender-ref ref="async-rollingfile"/>
   </root>
-  -->
   <root level="DEBUG">
     <appender-ref ref="console"/>
   </root>
