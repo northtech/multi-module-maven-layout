@@ -2,6 +2,9 @@ package dk.northtech.multimodule.webapi;
 
 import ch.qos.logback.classic.LoggerContext;
 import io.reactivex.schedulers.Schedulers;
+import org.geotools.data.DataAccessFinder;
+import org.geotools.data.DataStoreFinder;
+import org.geotools.factory.CommonFactoryFinder;
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.ReferencingFactoryFinder;
 import org.geotools.referencing.factory.AbstractAuthorityFactory;
@@ -13,6 +16,7 @@ import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.beans.Introspector;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -51,27 +55,36 @@ public class ShutdownLogic {
 
   public static void shutDownGeoTools() {
     // Unload all deferred authority factories so we get rid of the timer tasks in them
-    try {
-      // Disposing of the HSQLDB EPSG database raises an "illegal reflective access" warning. GeoTools maintainers are
-      // aware of this, with Andrea Aime raising an issue with HSQLDB: https://sourceforge.net/p/hsqldb/bugs/1526/
-      for (AuthorityFactory af : ReferencingFactoryFinder.getCRSAuthorityFactories(null)) {
-        if (af instanceof AbstractAuthorityFactory) {
-          ((AbstractAuthorityFactory) af).dispose();
-          LOGGER.debug("Disposed referencing factory {}", af.getClass().getCanonicalName());
-        }
-      }
-    } catch (Exception e) {
-      LOGGER.warn("Error occurred while trying to dispose CRSAuthorityFactories", e);
-    }
+    // Disposing of the HSQLDB EPSG database raises an "illegal reflective access" warning. GeoTools maintainers are
+    // aware of this, with Andrea Aime raising an issue with HSQLDB: https://sourceforge.net/p/hsqldb/bugs/1526/
+    disposeAuthorityFactories(ReferencingFactoryFinder.getCoordinateOperationAuthorityFactories(null));
+    disposeAuthorityFactories(ReferencingFactoryFinder.getCRSAuthorityFactories(null));
+    disposeAuthorityFactories(ReferencingFactoryFinder.getCSAuthorityFactories(null));
 
     WeakCollectionCleaner.DEFAULT.exit();
     DeferredAuthorityFactory.exit();
     CRS.reset("all");
 
     ReferencingFactoryFinder.reset();
-
+    CommonFactoryFinder.reset();
+    DataStoreFinder.reset();
+    DataAccessFinder.reset();
     CRS.cleanupThreadLocals();
     Formattable.cleanupThreadLocals();
+    Introspector.flushCaches();
+  }
+
+  private static void disposeAuthorityFactories(Set<? extends AuthorityFactory> factories) {
+    for (AuthorityFactory af : factories) {
+      if (af instanceof AbstractAuthorityFactory) {
+        try {
+          ((AbstractAuthorityFactory) af).dispose();
+          LOGGER.debug("Disposed referencing factory {}", af.getClass().getCanonicalName());
+        } catch (Exception e) {
+          LOGGER.warn("Error occurred while trying to dispose CRSAuthorityFactories", e);
+        }
+      }
+    }
   }
 
   /**
