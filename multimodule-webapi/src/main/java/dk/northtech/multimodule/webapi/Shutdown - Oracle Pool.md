@@ -1,7 +1,7 @@
-The Oracle JDBC Pool contains a longstanding flaw, loading its static housekeeping code and threads in the classloader
-of the first application which references the data source, rather than in the (container) classloader which loaded the
-driver. In other words, the first application to use a DataSource becomes the host of the database pool, even after it
-has otherwise terminated, creating a classloader leak.
+The Oracle JDBC Pool (`oracle.jdbc.pool.OracleDataSource`) contains a longstanding flaw, loading its static housekeeping
+code and threads in the classloader of the first application which references the data source, rather than in the
+(container) classloader which loaded the driver. In other words, the first application to use a DataSource becomes the
+host of the database pool, even after the app has otherwise terminated, creating a classloader leak.
 
 Oracle is aware of this bug, but dismisses it as "not significant, since it is only a single application".
 

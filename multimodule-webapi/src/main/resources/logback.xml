@@ -24,6 +24,7 @@ The downside to this is that it is not easily editable and persistent, as it wil
        never get a shutdown message from the logging context, creating a thread- and classloader leak. -->
   <appender name="async-rollingfile" class="ch.qos.logback.classic.AsyncAppender">
     <appender-ref ref="rollingfile"/>
+    <maxFlushTime>0</maxFlushTime>
   </appender>
 
   <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
