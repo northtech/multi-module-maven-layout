@@ -50,7 +50,7 @@
     <dependency>
       <groupId>io.reactivex.rxjava2</groupId>
       <artifactId>rxjava</artifactId>
-      <version>2.2.8</version>
+      <version>2.2.19</version>
     </dependency>
     <dependency>
       <groupId>javax.activation</groupId>
@@ -58,20 +58,19 @@
       <version>1.2.0</version>
     </dependency>
     <dependency>
-      <!-- We need to stay on 2.2 until the server supports Java9+ -->
       <groupId>javax.xml.bind</groupId>
       <artifactId>jaxb-api</artifactId>
-      <version>2.2.12</version>
+      <version>2.3.1</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-servlet</artifactId>
-      <version>2.28</version>
+      <version>2.30.1</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.inject</groupId>
       <artifactId>jersey-hk2</artifactId>
-      <version>2.28</version>
+      <version>2.30.1</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
