@@ -2,7 +2,6 @@ package dk.northtech.multimodule.webapi;
 
 import com.google.common.collect.ImmutableSet;
 import dk.northtech.gsonextensions.jaxrsgsongeo.GeoMessageBodyHandler;
-import dk.northtech.gsonextensions.jaxrsgsongeo.GeoParamConverterProvider;
 import dk.northtech.gsonextensions.jaxrssupport.JaxRsHttpStatus;
 import dk.northtech.gsonextensions.jaxrssupport.Rfc7159StringMessageBodyHandler;
 import dk.northtech.multimodule.webapi.serviceapis.SomeServiceWebApi;
@@ -20,8 +19,6 @@ public class WebApplication extends Application {
       GeoMessageBodyHandler.class,
       // Allow simple (quoted) JSON strings in addition to objects:
       Rfc7159StringMessageBodyHandler.class,
-      // Convert @QueryParam("...") input parameters:
-      GeoParamConverterProvider.class,
       // Filter to tag a returned object with a status code:
       JaxRsHttpStatus.class,
 
