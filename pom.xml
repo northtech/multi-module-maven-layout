@@ -20,12 +20,12 @@
     <revision>1.0.0-SNAPSHOT</revision>
 
     <!-- Shared versions of the most common tools -->
-    <dropwizard.metrics.version>4.1.11</dropwizard.metrics.version>
+    <dropwizard.metrics.version>4.1.18</dropwizard.metrics.version>
     <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
     <geotools.version>21.1</geotools.version>
     <gson.version>2.8.5</gson.version>
-    <guava.version>29.0-jre</guava.version>
-    <guice.version>4.2.3</guice.version>
+    <guava.version>30.1-jre</guava.version>
+    <guice.version>5.0.1</guice.version>
     <logback.version>1.2.3</logback.version>
     <northtech.gson.version>4.3.2</northtech.gson.version>
     <postgresql.version>42.2.12</postgresql.version>
@@ -46,25 +46,25 @@
     <dependency>
       <groupId>com.google.truth.extensions</groupId>
       <artifactId>truth-java8-extension</artifactId>
-      <version>1.0.1</version>
+      <version>1.1.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
       <artifactId>jgiven-junit5</artifactId>
-      <version>0.18.2</version>
+      <version>1.0.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.6.2</version>
+      <version>5.7.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>3.4.4</version>
+      <version>3.8.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -74,6 +74,11 @@
          can activate by referencing just the qualified plugin name -->
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -129,7 +134,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>versions-maven-plugin</artifactId>
-          <version>2.7</version>
+          <version>2.8.1</version>
           <configuration>
             <rulesUri>file://${parent-dir}/maven-version-rules.xml</rulesUri>
           </configuration>
@@ -137,7 +142,7 @@
         <plugin>
           <groupId>com.github.ekryd.sortpom</groupId>
           <artifactId>sortpom-maven-plugin</artifactId>
-          <version>2.12.0</version>
+          <version>2.13.1</version>
           <configuration>
             <nrOfIndentSpace>2</nrOfIndentSpace>
             <sortDependencies>scope,groupId,artifactId</sortDependencies>
@@ -160,7 +165,7 @@
         <plugin>
           <groupId>com.tngtech.jgiven</groupId>
           <artifactId>jgiven-maven-plugin</artifactId>
-          <version>0.18.2</version>
+          <version>1.0.0</version>
           <configuration>
             <format>html</format>
           </configuration>
@@ -209,7 +214,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>flatten-maven-plugin</artifactId>
-          <version>1.2.4</version>
+          <version>1.2.7</version>
           <configuration>
             <updatePomFile>true</updatePomFile>
           </configuration>
@@ -249,6 +254,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
